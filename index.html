@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sonima Pokharel - Educational Resources</title>
+    <style>
+        :root {
+            --primary-color: #2563eb; /* Blue 600 */
+            --primary-dark: #1e40af; /* Blue 800 */
+            --secondary-color: #475569; /* Slate 600 */
+            --accent-color: #ec4899; /* Pink 500 */
+            --light-color: #f1f5f9; /* Slate 100 */
+            --dark-color: #0f172a; /* Slate 900 */
+            --shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 15px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 0.5rem;
+            --container-padding: 1.25rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.75;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        header {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            color: #f3f4f6;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(92, 33, 182, 0.3);
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .header-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-content p {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background-color: #4c4f69;
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 110;
+            box-shadow: 0 4px 10px rgba(76, 79, 105, 0.6);
+            transition: background-color 0.3s ease;
+        }
+
+        nav:hover {
+            background-color: #6c5ce7;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #f3f4f6;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: #7c3aed;
+            color: #fff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.6);
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+
+            nav a {
+                justify-content: center;
+                font-size: 0.95rem;
+                padding: 0.7rem 1.2rem;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            font-size: clamp(1.75rem, 5vw, 2.75rem);
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 5px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1.5px solid rgba(0, 0, 0, 0.07);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .card-icon {
+            background: linear-gradient(120deg, var(--primary-color), var(--primary-dark));
+            height: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fafafa;
+            font-size: clamp(2.8rem, 6vw, 4rem);
+            position: relative;
+            overflow: hidden;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .card-icon::before {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 75%);
+            top: -30%;
+            left: -30%;
+        }
+
+        .card-content {
+            padding: 1.5rem 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .card p {
+            flex-grow: 1;
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .card-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .featured-card {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--accent-color);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1.7rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+            z-index: 20;
+        }
+
+        .about-section {
+            background-color: white;
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 3.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            font-size: 2.25rem;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.25rem;
+        }
+
+        .about-image {
+            background-color: var(--light-color);
+            width: 260px;
+            height: 260px;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .about-image svg {
+            max-width: 180px;
+            max-height: 180px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-text p {
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-text h4 {
+            color: var(--secondary-color);
+            font-size: 1.15rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .skill-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.45rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.65);
+            transform: translateY(-3px);
+        }
+
+        .thanks-section {
+            background: linear-gradient(120deg, var(--accent-color), #be185d);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thanks-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 20c4 0 7.2-3.4 7.2-7.6S17 5 13 5s-7.2 3.4-7.2 7.6S9 20 13 20zm53 30c4 0 7.2-3.4 7.2-7.6s-3.2-7.6-7.2-7.6-7.2 3.4-7.2 7.6 3.2 7.6 7.2 7.6zm-48-8c1.8 0 3.2-1.5 3.2-3.2s-1.4-3.2-3.2-3.2-3.2 1.5-3.2 3.2 1.4 3.2 3.2 3.2zm64 34c1.8 0 3.2-1.5 3.2-3.2s-1.4-3.2-3.2-3.2-3.2 1.5-3.2 3.2 1.4 3.2 3.2 3.2zM35 95c1.8 0 3.2-1.5 3.2-3.2s-1.4-3.2-3.2-3.2-3.2 1.5-3.2 3.2 1.4 3.2 3.2 3.2zm55-80c1.8 0 3.2-1.5 3.2-3.2s-1.4-3.2-3.2-3.2-3.2 1.5-3.2 3.2 1.4 3.2 3.2 3.2zM13 88c2.4 0 4.4-1.9 4.4-4.4S..."); /* truncated for brevity */
+            background-repeat: repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: #e2e8f0;
+            padding: 1.5rem var(--container-padding);
+            text-align: center;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+        }
+
+        footer .social-links {
+            margin: 0.75rem 0 0;
+        }
+
+        footer .social-link {
+            color: #e2e8f0;
+            margin: 0 0.6rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-link:hover,
+        footer .social-link:focus {
+            color: var(--accent-color);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-to-top:hover,
+        .back-to-top:focus {
+            background-color: var(--primary-dark);
+            outline: none;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 1.25rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            max-width: 480px;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: fadeInDown 0.5s ease forwards;
+        }
+
+        .modal-header h2 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            font-size: 1rem;
+        }
+
+        .modal-footer {
+            text-align: right;
+        }
+
+        .modal-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--accent-color);
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Sonima Pokharel</h1>
+            <p>Making learning easy and fun with curated educational resources.</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#thanks">Special Thanks</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="resources" class="animate delay-1">
+                <h2 class="section-title">My Educational Resources</h2>
+                <div class="grid-container">
+                    <!-- Computer Science Quiz Card -->
+                    <div class="card animate delay-1 featured-card">
+                        <div class="featured-badge">NEW</div>
+                        <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">
+                            <i>💻</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Computer Science Quiz</h3>
+                            <p>Interactive quiz covering Class 12 Computer Science curriculum with multiple topics and difficulty levels.</p>
+                            <a href="computer.html" class="card-btn">Take Quiz →</a>
+                        </div>
+                    </div>
+
+                    <!-- Story Card -->
+                    <div class="card animate delay-1">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i>📖</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Story</h3>
+                            <p>Collection of creative stories for reading and learning.</p>
+                            <a href="story.html" class="card-btn">Read Stories →</a>
+                        </div>
+                    </div>
+
+                    <!-- Poetry Card -->
+                    <div class="card animate delay-1">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <i>🎭</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Poetry</h3>
+                            <p>Beautiful poems that inspire and evoke emotions.</p>
+                            <a href="poem.html" class="card-btn">Read Poems →</a>
+                        </div>
+                    </div>
+
+                    <!-- One Act Play Card -->
+                    <div class="card animate delay-2">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <i>🎬</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>One Act Play</h3>
+                            <p>Short theatrical plays for performance and study.</p>
+                            <a href="oneactplay.html" class="card-btn">View Plays →</a>
+                        </div>
+                    </div>
+
+                    <!-- Essays Card -->
+                    <div class="card animate delay-2">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                            <i>📝</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Essays</h3>
+                            <p>Thoughtful essays on various topics and subjects.</p>
+                            <a href="Essay.html" class="card-btn">Read Essays →</a>
+                        </div>
+                    </div>
+
+                    <!-- नेपाली Card -->
+                    <div class="card animate delay-3">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                            <i>🌏</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>नेपाली</h3>
+                            <p>Nepali language resources and learning materials.</p>
+                            <a href="nepali.html" class="card-btn">View Nepali →</a>
+                        </div>
+                    </div>
+
+                    <!-- Prepositions Card -->
+                    <div class="card animate delay-3">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #eab308, #ca8a04);">
+                            <i>🔤</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Prepositions</h3>
+                            <p>Learn about English prepositions and their usage.</p>
+                            <a href="preposition.html" class="card-btn">Learn Prepositions →</a>
+                        </div>
+                    </div>
+
+                    <!-- Carboxylic Acids Card -->
+                    <div class="card animate delay-4">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">
+                            <i>🧪</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Carboxylic Acids</h3>
+                            <p>Chemistry resources on carboxylic acid compounds.</p>
+                            <a href="carboxylic.html" class="card-btn">Study Chemistry →</a>
+                        </div>
+                    </div>
+
+                    <!-- Haloalkanes & Aldehydes Card -->
+                    <div class="card animate delay-4">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #334155, #1e293b);">
+                            <i>⚗️</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Haloalkanes & Aldehydes</h3>
+                            <p>Chemistry lessons on haloalkanes and aldehydes.</p>
+                            <a href="haloalkanesandaldehyde.html" class="card-btn">Study Chemistry →</a>
+                        </div>
+                    </div>
+
+                    <!-- Haloarenes Card -->
+                    <div class="card animate delay-5">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #475569, #334155);">
+                            <i>🔬</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Haloarenes</h3>
+                            <p>Chemistry resources on haloarene compounds.</p>
+                            <a href="haloarenes.html" class="card-btn">Study Chemistry →</a>
+                        </div>
+                    </div>
+
+                    <!-- Nitro & Ether Card -->
+                    <div class="card animate delay-5">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
+                            <i>🧫</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Nitro & Ether</h3>
+                            <p>Chemistry lessons on nitro compounds and ethers.</p>
+                            <a href="nitroether.html" class="card-btn">Study Chemistry →</a>
+                        </div>
+                    </div>
+
+                    <!-- Phenol Card -->
+                    <div class="card animate delay-5">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #9333ea, #7e22ce);">
+                            <i>🧪</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Phenol</h3>
+                            <p>Chemistry resources on phenolic compounds.</p>
+                            <a href="phenol.html" class="card-btn">Study Chemistry →</a>
+                        </div>
+                    </div>
+
+                    <!-- Grammar Card -->
+                    <div class="card animate delay-5">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #c2410c, #9a3412);">
+                            <i>📊</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Grammar</h3>
+                            <p>English grammar rules and explanations.</p>
+                            <a href="grammar.html" class="card-btn">Learn Grammar →</a>
+                        </div>
+                    </div>
+
+                    <!-- Grammar Quiz Card -->
+                    <div class="card animate delay-5">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #be123c, #9f1239);">
+                            <i>✅</i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Grammar Quiz</h3>
+                            <p>Test your English grammar knowledge with quizzes.</p>
+                            <a href="Quiz.html" class="card-btn">Take Quiz →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about-section animate delay-2">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image" aria-label="Avatar illustration of Sonima Pokharel">
+                        <svg width="300" height="300" viewBox="0 0 300 300" role="img" aria-hidden="false" aria-describedby="avatarDesc" xmlns="http://www.w3.org/2000/svg">
+                            <desc id="avatarDesc">Abstract avatar of Sonima Pokharel in purple shades</desc>
+                            <defs>
+                                <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#6366f1" />
+                                    <stop offset="100%" stop-color="#4f46e5" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="150" cy="120" r="70" fill="url(#avatarGradient)" />
+                            <circle cx="150" cy="105" r="20" fill="#f8fafc" />
+                            <path d="M150,190 C194,190 230,230 240,280 L60,280 C70,230 106,190 150,190 Z" fill="url(#avatarGradient)" />
+                        </svg>
+                    </div>
+                    <div class="about-text">
+                        <h3>Sonima Pokharel</h3>
+                        <p>Hi! I’m Sonima, and I love making learning easy and fun. I’ve put together lots of useful resources on everything from literature and chemistry to computer science and languages.</p>
+                        <p>My goal is to help students get a clear grasp of tricky topics with simple explanations and examples that actually make sense.</p>
+                        <h4>What I’m Good At:</h4>
+                        <div class="skills">
+                            <span class="skill-tag">Chemistry</span>
+                            <span class="skill-tag">Computer Science</span>
+                            <span class="skill-tag">English Grammar</span>
+                            <span class="skill-tag">Nepali Language</span>
+                            <span class="skill-tag">Literature</span>
+                            <span class="skill-tag">Creative Writing</span>
+                            <span class="skill-tag">Education</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="thanks" class="thanks-section animate delay-3">
+                <div class="thanks-content" role="region" aria-label="Special Thanks section">
+                    <h2>Special Thanks</h2>
+                    <p>I’m truly grateful to everyone who supported me along this journey — your encouragement, belief, and kind words meant the world to me. Creating these resources has been a labor of love, and I couldn’t have done it without your quiet strength behind me.</p>
+                    <p>Thank you all for believing in me and this dream. This is just the beginning!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sonima Pokharel. All rights reserved.</p>
+            <div class="social-links" role="list" aria-label="Social media links">
+                <a href="#" class="social-link" onclick="showModal('contact')" aria-label="Contact via email">📧</a>
+                <a href="tel:+9779807197313" class="social-link" aria-label="Phone contact">📱</a>
+                <a href="https://facebook.com" class="social-link" target="_blank" rel="noopener" aria-label="Facebook profile">📘</a>
+                <a href="https://twitter.com" class="social-link" target="_blank" rel="noopener" aria-label="Twitter profile">🐦</a>
+            </div>
+            <p>Curated with care — for learners, dreamers, and curious minds.</p>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+    <!-- Modal -->
+    <div id="contactModal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contact')" aria-label="Close modal" tabindex="0">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-title">Let's Connect</h2>
+            </div>
+            <div class="modal-body">
+                <p>Hey there! 😊 Thanks for stopping by. If you'd like to reach out, feel free to use any of the ways below—I'd love to hear from you.</p>
+                <p><strong>Email:</strong> <a href="mailto:sonimapokharel@gmail.com">sonimapokharel@gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+9779807197313">+977 9807197313</a></p>
+                <p>Whether it’s feedback, a question, or a friendly hello — I usually respond within a day or two. Talk soon!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" onclick="closeModal('contact')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal open/close functions
+        function showModal(id) {
+            const modal = document.getElementById(id + "Modal");
+            if (modal) {
+                modal.style.display = "flex";
+                modal.setAttribute("aria-hidden", "false");
+                // Trap focus inside modal for accessibility
+                trapFocus(modal);
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id + "Modal");
+            if (modal) {
+                modal.style.display = "none";
+                modal.setAttribute("aria-hidden", "true");
+                // Remove focus trap
+                document.activeElement.blur();
+            }
+        }
+
+        // Back to top button
+        const backToTop = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = "inline-flex";
+            } else {
+                backToTop.style.display = "none";
+            }
+        });
+
+        backToTop.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Accessibility: trap focus inside modal while open
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll(
+                'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+
+            function handleTrap(e) {
+                if (e.key === "Tab") {
+                    if (e.shiftKey) {
+                        // shift + tab
+                        if (document.activeElement === firstFocusable) {
+                            e.preventDefault();
+                            lastFocusable.focus();
+                        }
+                    } else {
+                        // tab
+                        if (document.activeElement === lastFocusable) {
+                            e.preventDefault();
+                            firstFocusable.focus();
+                        }
+                    }
+                }
+                if (e.key === "Escape") {
+                    closeModal('contact');
+                }
+            }
+
+            element.addEventListener("keydown", handleTrap);
+            firstFocusable.focus();
+
+            // Remove listener on close
+            const observer = new MutationObserver(() => {
+                if (element.style.display === "none") {
+                    element.removeEventListener("keydown", handleTrap);
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(element, { attributes: true, attributeFilter: ["style"] });
+        }
+    </script>
+</body>
+</html>
